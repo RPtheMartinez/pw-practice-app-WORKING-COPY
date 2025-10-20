@@ -5,7 +5,7 @@ test.beforeEach(async ({ page }) => {
     await page.goto("http://localhost:4200/")
 })
 
-test.skip('Navigate to the Form page', async ({ page }) => {
+test.skip('Navigate to the Form page @smoke', async ({ page }) => {
     const pm = new PageManager(page)
     await pm.navigateTo().formLayoutsPage()
     await pm.navigateTo().datepickerPage()

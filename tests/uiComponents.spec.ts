@@ -10,7 +10,7 @@ test.beforeEach(async({page}) => {
 })
 
 
-test.describe('Form Layouts Page', () => {
+test.describe('Form Layouts Page @block', () => {
   test.describe.configure({retries: 2}) //Overrides the global retry setting for this specific describe block
 
   //This will run all tests in this describe block in "serial," or - one after the other.

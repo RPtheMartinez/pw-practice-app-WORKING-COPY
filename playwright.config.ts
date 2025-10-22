@@ -18,7 +18,13 @@ export default defineConfig<TestOptions>({
   //workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   //Below is considered the "Global Section"
-  reporter: 'html',
+  // We can have multiple reporters.
+  reporter: [
+    ['json', {  outputFile: 'test-results/jsonReport.json' }],
+    ['junit', { outputFile: 'test-results/junitReport.xml' }],
+    ['html', { outputFolder: 'test-results/htmlReport', open: 'never' }],
+    ['list', { outputFile: 'test-results/listReport.txt' }]
+  ],
   use: {
     // baseURL: 'http://localhost:3000',
    // baseURL: 'http://localhost:4200/',

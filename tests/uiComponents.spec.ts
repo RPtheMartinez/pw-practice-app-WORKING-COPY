@@ -21,7 +21,6 @@ test.beforeEach( async({page}) => {
   await page.getByText('Forms').click()
   await page.getByText('Form Layouts').click()
 })
-
   
    test('Input Fields', async ({page}) => {
         const usingTheGridEmailInput = page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('textbox', {name: "Email"})
@@ -40,7 +39,7 @@ test.beforeEach( async({page}) => {
             });
         
             //Radio Buttons
-            test('Radio Buttons', async ({page}) => {
+            test.only('Radio Buttons', async ({page}) => {
                 const usingTheGridForm = page.locator('nb-card', {hasText: "Using the Grid"})
                 
                 //Getting by the radio button label
@@ -51,6 +50,7 @@ test.beforeEach( async({page}) => {
 
                 const radioStatus = await usingTheGridForm.getByRole('radio', {name: 'Option 1'}).isChecked()
                 expect(radioStatus).toBeTruthy()
+                await expect(usingTheGridForm).toHaveScreenshot()
 
                 await expect(usingTheGridForm.getByRole('radio', {name: "Option 1"})).toBeChecked()
                 

@@ -7,6 +7,12 @@ import type {TestOptions } from './test-options';
 require('dotenv').config();
 
 export default defineConfig<TestOptions>({
+  timeout: 40000,
+  globalTimeout: 600000, //10 minutes
+  expect: {
+    timeout: 2000,
+    toMatchSnapshot: {maxDiffPixels: 50}
+  },
  
   /* Retry on CI "Continuous Integration" only */
   //retries: process.env.CI ? 2 : 1, //If the test fails, we want to retry it once. If it fails again, then we mark it as failed.
@@ -23,7 +29,8 @@ export default defineConfig<TestOptions>({
     ['json', {  outputFile: 'test-results/jsonReport.json' }],
     ['junit', { outputFile: 'test-results/junitReport.xml' }],
     ['html', { outputFolder: 'test-results/htmlReport', open: 'never' }],
-    ['list', { outputFile: 'test-results/listReport.txt' }]
+    ['list', { outputFile: 'test-results/listReport.txt' }],
+   // ['allure-playwright', { outputFolder: 'test-results/allure-report' }],
   ],
   use: {
     // baseURL: 'http://localhost:3000',
